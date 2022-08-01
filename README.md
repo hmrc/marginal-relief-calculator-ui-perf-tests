@@ -1,7 +1,7 @@
 **This is a template README.md.  Be sure to update this with project specific content that describes your performance test project.**
 
-# marginal-relief-calculator-ui-perf-tests
-Performance test suite for the `<digital service name>`, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
+# Marginal Relief Calculator Frontend performance tests
+Performance test suite for the `Marginal Relief Calculator Frontend`, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
 
 
 ## Running the tests
