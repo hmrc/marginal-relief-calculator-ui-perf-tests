@@ -27,12 +27,12 @@ object MarginalReliefCalculatorRequestsRequests extends ServicesConfiguration {
   val route: String   = "/marginal-relief-calculator"
 
   val indexPage: HttpRequestBuilder =
-    http("Index page")
+    http("Get start page")
       .get(s"$baseUrl$route")
       .check(status.is(200))
 
   val accountingPeriodPage: HttpRequestBuilder =
-    http("Accounting period page")
+    http("Get accounting period page")
       .get(s"$baseUrl$route/accounting-period")
       .check(status.is(200))
       .check(saveCsrfToken)
@@ -65,7 +65,7 @@ object MarginalReliefCalculatorRequestsRequests extends ServicesConfiguration {
       .check(header("Location").is(s"$route/distribution").saveAs("distributionPage"))
 
   val distributionPage: HttpRequestBuilder =
-    http("Get distribution page")
+    http("Get Distribution page")
       .get(s"$baseUrl$${distributionPage}": String)
       .check(status.is(200))
       .check(saveCsrfToken)

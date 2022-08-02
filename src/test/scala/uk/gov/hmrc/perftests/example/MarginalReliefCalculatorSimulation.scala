@@ -21,34 +21,34 @@ import uk.gov.hmrc.perftests.example.MarginalReliefCalculatorRequestsRequests._
 
 class MarginalReliefCalculatorSimulation extends PerformanceTestRunner {
 
-  setup("get-index-page", "Index Page") withRequests indexPage
+  setup("get-index-page", "Start Page") withRequests indexPage
 
-  setup("get-accounting-period-page", "Get accounting period page") withRequests accountingPeriodPage
+  setup("get-accounting-period-page", "Accounting period page") withRequests accountingPeriodPage
 
-  setup("post-accounting-period-page", "Post accounting period page") withRequests postAccountingPeriodPage
+  setup("post-accounting-period-page", "Accounting period page") withRequests postAccountingPeriodPage
 
-  setup("get-taxable-profit-page", "Get taxable profit page") withRequests taxableProfitPage
+  setup("get-taxable-profit-page", "Taxable profit page") withRequests taxableProfitPage
 
-  setup("post-taxable-profit-page", "Post accounting period page") withRequests postTaxableProfitPage
+  setup("post-taxable-profit-page", "Taxable profit page") withRequests postTaxableProfitPage
 
-  setup("get-distribution-page", "Get distribution page") withRequests distributionPage
+  setup("get-distribution-page", "Distribution page") withRequests distributionPage
 
-  setup("post-distribution-page", "Post distribution page") withRequests postDistributionPage
+  setup("post-distribution-page", "Distribution page") withRequests postDistributionPage
 
-  setup("get-distributions-included-page", "Get distributions included page") withRequests distributionsIncludedPage
+  setup("get-distributions-included-page", "Distributions included page") withRequests distributionsIncludedPage
 
   setup(
     "post-distributions-included-page",
-    "Post distributions included page"
+    "Distributions included page"
   ) withRequests postDistributionsIncludedPage
 
-  setup("get-associated-companies-page", "Get associated companies page") withRequests associatedCompaniesPage
+  setup("get-associated-companies-page", "Associated companies page") withRequests associatedCompaniesPage
 
-  setup("post-associated-companies-page", "Post associated companies page") withRequests postAssociatedCompaniesPage
+  setup("post-associated-companies-page", "Associated companies page") withRequests postAssociatedCompaniesPage
 
-  setup("get-check-your-answers-page", "Get check your answers page") withRequests checkYourAnswersPage
+  setup("get-check-your-answers-page", "Check your answers page") withRequests checkYourAnswersPage
 
-  setup("get-results-page", "Get results page") withRequests resultsPage
+  setup("get-results-page", "Results page") withRequests resultsPage
 
   runSimulation()
 }
