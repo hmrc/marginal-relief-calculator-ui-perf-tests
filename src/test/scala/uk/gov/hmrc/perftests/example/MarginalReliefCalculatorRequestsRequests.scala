@@ -76,7 +76,7 @@ object MarginalReliefCalculatorRequestsRequests extends ServicesConfiguration {
       .formParam("distribution", "yes")
       .formParam("csrfToken", s"$${csrfToken}")
       .check(status.is(303))
-      .check(header("Location").is(s"$route/distributionsIncluded").saveAs("distributionsIncludedPage"))
+      .check(header("Location").is(s"$route/distributions-included").saveAs("distributionsIncludedPage"))
 
   val distributionsIncludedPage: HttpRequestBuilder =
     http("Get distributions included page")
