@@ -118,5 +118,11 @@ object MarginalReliefCalculatorRequestsRequests extends ServicesConfiguration {
       .get(s"$baseUrl$route/results-page": String)
       .check(status.is(200))
 
+  val fullResultsPage: HttpRequestBuilder =
+    http("Get full results page")
+      .get(s"$baseUrl$route/full-results-page": String)
+      .check(status.is(200))
+  
+
   def saveCsrfToken = regex("""name="csrfToken" value="([^"]+)"""").saveAs("csrfToken")
 }
