@@ -52,6 +52,8 @@ class MarginalReliefCalculatorSimulation extends PerformanceTestRunner {
 
   setup("get-full-results-page", "Full Results Page") withRequests fullResultsPage
 
+  setup("get-pdf", "PDF Page") withRequests PDFPage
 
+  setup("post-pdf", "PDF Page") withRequests postPDFPage
   runSimulation()
 }
