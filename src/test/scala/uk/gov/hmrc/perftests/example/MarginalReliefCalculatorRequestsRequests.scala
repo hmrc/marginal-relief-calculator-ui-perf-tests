@@ -123,18 +123,25 @@ object MarginalReliefCalculatorRequestsRequests extends ServicesConfiguration {
       .get(s"$baseUrl$route/full-results-page": String)
       .check(status.is(200))
 
-    val PDFPage: HttpRequestBuilder =
-    http("Get PDF page")
-      .get(s"$baseUrl$${pdf}": String)
+  val PDFMetaDataPage: HttpRequestBuilder =
+    http("Get pdf meta data page")
+      .get(s"$baseUrl$route/pdf-meta-data": String)
       .check(status.is(200))
       .check(saveCsrfToken)
 
-  val postPDFPage: HttpRequestBuilder =
-    http("Post PDF page")
-      .post(s"$baseUrl$${pdf}": String)
+  val postPDFMetaDataPage: HttpRequestBuilder =
+    http("Post pdf meta data page")
+      .post(s"$baseUrl$route/pdf-meta-data": String)
+      .formParam("Company name (optional)", "abcdefg")
+      .formParam("UTR number (optional)", "abcdefg")
       .formParam("csrfToken", s"$${csrfToken}")
       .check(status.is(303))
-      .check(header("Location").is(s"$route/pdf").saveAs("PDFPage"))
+      .check(header("Location").is(s"$route/pdf").saveAs("pdf"))
+
+  val PDFPage: HttpRequestBuilder =
+    http("Get PDF page")
+      .get(s"$baseUrl$${pdf}": String)
+      .check(status.is(200))
 
 
   def saveCsrfToken = regex("""name="csrfToken" value="([^"]+)"""").saveAs("csrfToken")
