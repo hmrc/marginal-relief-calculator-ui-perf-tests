@@ -52,11 +52,13 @@ class MarginalReliefCalculatorSimulation extends PerformanceTestRunner {
 
   setup("get-full-results-page", "Full Results Page") withRequests fullResultsPage
 
-  setup("get-pdf-meta-data-page", "PDF meta data page") withRequests PDFMetaDataPage
+  setup("get-pdf-meta-data-page", "PDF meta data page") withRequests pdfMetaDataPage
 
-  setup("post-pdf-meta-data-page", "PDF meta data page") withRequests postPDFMetaDataPage
+  setup("post-pdf-meta-data-page", "PDF meta data page") withRequests postPdfMetaDataPage
 
-  setup("get-pdf-page", "PDF Page") withRequests PDFPage
+  setup("get-pdf-page", "PDF Page") withRequests pdfPage
+
+  setup("get-pdf-save-page", "PDF save page") withRequests savePdfPage
 
   runSimulation()
 }
