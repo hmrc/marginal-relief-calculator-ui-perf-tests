@@ -1,21 +1,18 @@
-**This is a template README.md.  Be sure to update this with project specific content that describes your performance test project.**
-
 # Marginal Relief Calculator Frontend performance tests
 Performance test suite for the `Marginal Relief Calculator Frontend`, using [performance-test-runner](https://github.com/hmrc/performance-test-runner) under the hood.
-
 
 ## Running the tests
 
 Prior to executing the tests ensure you have:
 
-* Docker - to start mongo container
+* Docker - to start mongo container (Note - there are other ways to run Docker on the command line so this command may be different)
 * Installed/configured service manager
 
 Run the following command to start the services locally:
 ```
 docker run --rm -d --name mongo -d -p 27017:27017 mongo:4.0
 
-sm --start PLATFORM_EXAMPLE_UI_TESTS -r --wait 100
+sm2 --start MARGINAL_RELIEF_CALCULATOR_ALL -r --wait 100
 ```
 
 Using the `--wait 100` argument ensures a health check is run on all the services started as part of the profile. `100` refers to the given number of seconds to wait for services to pass health checks.
