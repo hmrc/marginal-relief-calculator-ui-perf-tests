@@ -46,71 +46,71 @@ object MarginalReliefCalculatorRequestsRequests extends ServicesConfiguration {
       .formParam("accountingPeriodEndDate.day", "31")
       .formParam("accountingPeriodEndDate.month", "12")
       .formParam("accountingPeriodEndDate.year", "2023")
-      .formParam("csrfToken", s"$${csrfToken}")
+      .formParam("csrfToken", s"#{csrfToken}")
       .check(status.is(303))
       .check(header("Location").is(s"$route/taxable-profit").saveAs("taxableProfitPage"))
 
   val taxableProfitPage: HttpRequestBuilder =
     http("Get taxable profit page")
-      .get(s"$baseUrl$${taxableProfitPage}": String)
+      .get(session => s"$baseUrl${session("taxableProfitPage").as[String]}")
       .check(status.is(200))
       .check(saveCsrfToken)
 
   val postTaxableProfitPage: HttpRequestBuilder =
     http("Post taxable profit page")
-      .post(s"$baseUrl$${taxableProfitPage}": String)
+      .post(session => s"$baseUrl${session("taxableProfitPage").as[String]}")
       .formParam("value", "100000")
-      .formParam("csrfToken", s"$${csrfToken}")
+      .formParam("csrfToken", s"#{csrfToken}")
       .check(status.is(303))
       .check(header("Location").is(s"$route/distribution").saveAs("distributionPage"))
 
   val distributionPage: HttpRequestBuilder =
     http("Get Distribution page")
-      .get(s"$baseUrl$${distributionPage}": String)
+      .get(session => s"$baseUrl${session("distributionPage").as[String]}")
       .check(status.is(200))
       .check(saveCsrfToken)
 
   val postDistributionPage: HttpRequestBuilder =
     http("Post distribution page")
-      .post(s"$baseUrl$${distributionPage}": String)
+      .post(session => s"$baseUrl${session("distributionPage").as[String]}")
       .formParam("distribution", "yes")
-      .formParam("csrfToken", s"$${csrfToken}")
+      .formParam("csrfToken", s"#{csrfToken}")
       .check(status.is(303))
       .check(header("Location").is(s"$route/distributions-included").saveAs("distributionsIncludedPage"))
 
   val distributionsIncludedPage: HttpRequestBuilder =
     http("Get distributions included page")
-      .get(s"$baseUrl$${distributionsIncludedPage}": String)
+      .get(session => s"$baseUrl${session("distributionsIncludedPage").as[String]}")
       .check(status.is(200))
       .check(saveCsrfToken)
 
   val postDistributionsIncludedPage: HttpRequestBuilder =
     http("Post distributions included page")
-      .post(s"$baseUrl$${distributionsIncludedPage}": String)
+      .post(session => s"$baseUrl${session("distributionsIncludedPage").as[String]}")
       .formParam("distributionsIncluded", "yes")
       .formParam("distributionsIncludedAmount", "10000")
-      .formParam("csrfToken", s"$${csrfToken}")
+      .formParam("csrfToken", s"#{csrfToken}")
       .check(status.is(303))
       .check(header("Location").is(s"$route/associated-companies").saveAs("associatedCompaniesPage"))
 
   val associatedCompaniesPage: HttpRequestBuilder =
     http("Get associated companies page")
-      .get(s"$baseUrl$${associatedCompaniesPage}": String)
+      .get(session => s"$baseUrl${session("associatedCompaniesPage").as[String]}")
       .check(status.is(200))
       .check(saveCsrfToken)
 
   val postAssociatedCompaniesPage: HttpRequestBuilder =
     http("Post associated companies page")
-      .post(s"$baseUrl$${associatedCompaniesPage}": String)
+      .post(session => s"$baseUrl${session("associatedCompaniesPage").as[String]}")
       .formParam("associatedCompanies", "yes")
       .formParam("associatedCompaniesCount", "1")
-      .formParam("csrfToken", s"$${csrfToken}")
+      .formParam("csrfToken", s"#{csrfToken}")
       .check(status.is(303))
       .check(header("Location").is(s"$route/check-your-answers").saveAs("checkYourAnswersPage"))
 
   val checkYourAnswersPage: HttpRequestBuilder =
     http("Get check your answers page")
-      .get(s"$baseUrl$${checkYourAnswersPage}": String)
+      .get(session => s"$baseUrl${session("checkYourAnswersPage").as[String]}")
       .check(status.is(200))
 
   val resultsPage: HttpRequestBuilder =
@@ -133,13 +133,13 @@ object MarginalReliefCalculatorRequestsRequests extends ServicesConfiguration {
       .post(s"$baseUrl$route/pdf-meta-data": String)
       .formParam("Company name (optional)", "abcdefg")
       .formParam("UTR number (optional)", "abcdefg")
-      .formParam("csrfToken", s"$${csrfToken}")
+      .formParam("csrfToken", s"#{csrfToken}")
       .check(status.is(303))
       .check(header("Location").is(s"$route/pdf").saveAs("pdf"))
 
   val pdfPage: HttpRequestBuilder =
     http("Get pdf page")
-      .get(s"$baseUrl$${pdf}": String)
+      .get(session => s"$baseUrl${session("pdf").as[String]}")
       .check(status.is(200))
 
   val savePdfPage: HttpRequestBuilder =
