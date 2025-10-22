@@ -25,12 +25,12 @@ The template uses [logback.xml](src/test/resources) to configure log levels. The
 
 It might be useful to try the journey with one user to check that everything works fine before running the full performance test
 ```
-sbt -Dperftest.runSmokeTest=true -DrunLocal=true gatling:test
+sbt -Dperftest.runSmokeTest=true -DrunLocal=true Gatling/test
 ```
 
 #### Running the performance test
 ```
-sbt -DrunLocal=true gatling:test
+sbt -DrunLocal=true Gatling/test
 ```
 ### Run the example test against staging environment
 
@@ -51,6 +51,12 @@ To run a full performance test against staging environment, implement a job buil
  ```
  sbt scalafmtAll
  ```
+
+Format `*.sbt` and `project/*.scala` files as follows:
+
+ ```
+sbt scalafmtSbt
+```
 
  To check files have been formatted as expected execute:
 
