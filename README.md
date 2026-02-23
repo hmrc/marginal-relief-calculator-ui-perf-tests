@@ -25,12 +25,12 @@ The template uses [logback.xml](src/test/resources) to configure log levels. The
 
 It might be useful to try the journey with one user to check that everything works fine before running the full performance test
 ```
-sbt -Dperftest.runSmokeTest=true -DrunLocal=true Gatling/test
+sbt -Dperftest.runSmokeTest=true -DrunLocal=true -Dconfig.resource=application.local.conf Gatling/test
 ```
 
 #### Running the performance test
 ```
-sbt -DrunLocal=true Gatling/test
+sbt -DrunLocal=true -Dconfig.resource=application.local.conf Gatling/test
 ```
 ### Run the example test against staging environment
 
@@ -63,5 +63,15 @@ sbt scalafmtSbt
  ```
  sbt scalafmtCheckAll scalafmtSbtCheck
  ```
+
+
+
+- **`application.conf`**: Default configuration for Jenkins/staging runs
+    - Uses production load (10%)
+    - Prevents overwhelming shared staging environment during CI performance tests
+- **`application.local.conf`**: Configuration for local development runs
+    - Uses production load with 2x buffer (20%)
+    - Provides confidence that application can handle peak load scenarios
+    - Automatically used when running tests locally
 
 [Visit the official Scalafmt documentation to view a complete list of tasks which can be run.](https://scalameta.org/scalafmt/docs/installation.html#task-keys)
